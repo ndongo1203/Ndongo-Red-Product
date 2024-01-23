@@ -9,7 +9,7 @@ const Sidebar = () => {
         <div className="bg-sidebar text-white p-0 m-0 bg-sidbar">
             <div className="p-3 d-flex">
             <img src={Image1} alt="" className='img-fluid' />
-            <h3 className='m'>RED PRODUCT</h3>
+            <h4 className='m'>RED PRODUCT</h4>
             </div>
             <div className="mx-3 mt-2">
                 <p>Principal</p>

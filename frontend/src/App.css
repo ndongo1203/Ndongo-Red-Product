@@ -120,13 +120,13 @@ body{
 
 /* HotelsCard */
 .hotelsCard {
-  width: 18rem;
+  width: 16rem;
   border-radius: 15px !important;
 }
 
 .address{
   color: #8D4B38 !important;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 #createHotelButton{
