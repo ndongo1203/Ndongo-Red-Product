@@ -6,15 +6,18 @@ function MenuModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Faites quelque chose avec les données du formulaire et l'image sélectionnée (selectedImage)
     console.log("Données du formulaire :", e.target.elements);
     console.log("Image sélectionnée :", selectedImage);
   };
 
   const handleImageClick = () => {
+    // Déclencher l'ouverture du sélecteur de fichiers
     document.getElementById("image").click();
   };
 
   const handleImageChange = (e) => {
+    // Mettre à jour l'état avec le fichier sélectionné
     const file = e.target.files[0];
     setSelectedImage(file);
   };

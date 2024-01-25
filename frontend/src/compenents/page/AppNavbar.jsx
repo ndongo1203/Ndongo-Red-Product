@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import profileImage from '../../Assets/images/profile.png'; 
 import { IoIosNotifications } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
 // import HeaderHotels from './contenuHotel/HeaderHotels';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import HeaderSidebar from './HeaderSidebar';
+import { getUserDetails } from '../../Utils/GetUserDetails';
 
 
 const AppNavbar = () => {
+    const navigate = useNavigate();
+    const [user, setUser] = useState();
+  
+    if(!user){
+      navigate('/');
+    }
+  
+    useEffect(() => {
+      const userDetails = getUserDetails();
+         setUser(userDetails);
+    }, [])
+    
+  
+  
+  
+    const handleLogout = () => {
+      localStorage.removeItem('todoAppUser');
+      navigate('/');
+    };
+  
+
     const location = useLocation() 
     const path= location.pathname
     const getTitle = () => {
@@ -46,8 +68,8 @@ const AppNavbar = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#notification">
-                            <MdLogout className='fs-3 mt-2' />
+                        <a className="nav-link" href="#deconnectio">
+                            <MdLogout onClick={handleLogout} className='fs-3 mt-2' />
                         </a>
                     </li>
                 </ul>
