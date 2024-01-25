@@ -1,30 +1,38 @@
-import React, { useRef } from "react";
-import InputModalHotel from "./InputModalHotel"; 
+import React, { useState } from "react";
+import InputModalHotel from "./InputModalHotel";
 
 function MenuModal() {
-  const fileInputRef = useRef(null);
-  const handleImageIconClick = () => {
-    fileInputRef.current.classList.add("temp-visible");
-    fileInputRef.current.click();
-    setTimeout(() => {
-      fileInputRef.current.classList.remove("temp-visible");
-    }, 100);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Données du formulaire :", e.target.elements);
+    console.log("Image sélectionnée :", selectedImage);
   };
-    
+
+  const handleImageClick = () => {
+    document.getElementById("image").click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(file);
+  };
+
   return (
     <div>
       <div className="modal-body">
-        <form className="modalLabel">
+        <form className="modalLabel" onSubmit={handleSubmit}>
           <div className="row">
-            <InputModalHotel type={"text"} label={"Adresse de l'hotel"} /> 
-            <InputModalHotel type={"text"} label={"Adresse"} /> 
+            <InputModalHotel type={"text"} label={"Adresse de l'hotel"} />
+            <InputModalHotel type={"text"} label={"Adresse"} />
           </div>
           <div className="row">
-            <InputModalHotel type={"email"} label={"E-mail"} /> 
-            <InputModalHotel type={"number"} label={"Numéro de téléphone"} /> 
+            <InputModalHotel type={"email"} label={"E-mail"} />
+            <InputModalHotel type={"number"} label={"Numéro de téléphone"} />
           </div>
           <div className="row">
-            <InputModalHotel type={"number"} label={"Prix par nuit"} /> 
+            <InputModalHotel type={"number"} label={"Prix par nuit"} />
             <div className="col">
               <label htmlFor="devise" className="form-label">
                 Devise
@@ -37,14 +45,18 @@ function MenuModal() {
             </div>
           </div>
           <div className="row mb-3 mt-3">
-            <div className="col p-0 border rounded py-4 d-flex align-items-center justify-content-center flex-column">
+            <div
+              className="col p-0 border rounded py-4 d-flex align-items-center justify-content-center flex-column"
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+            >
               <input
                 type="file"
                 className="form-control visually-hidden"
                 id="image"
-                ref={fileInputRef}
+                onChange={handleImageChange}
               />
-              <span className="ms-2 imageModal" onClick={handleImageIconClick}>
+              <span className="ms-2 imageModal">
                 <i className="bi bi-image fs-1"></i>
               </span>
               <p className="textImg">Ajouter une image</p>

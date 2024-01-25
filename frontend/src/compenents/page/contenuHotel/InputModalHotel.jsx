@@ -6,7 +6,7 @@ function InputModalHotel({ label, type }) {
             <label htmlFor="email" className="form-label">
                 {label}
             </label>
-            <input type={type} className="form-control" id="email" placeholder="" />
+            <input type={type} className="form-control  outline-none " id="email" placeholder="" />
         </div>
     )
 }

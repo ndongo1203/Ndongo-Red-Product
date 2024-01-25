@@ -15,7 +15,7 @@ const Sidebar = () => {
                 <p>Principal</p>
             </div>
             <ul className="list-unstyled hover-liste mt-3 fs-5">
-                <Link to="/Dashboard" style={{ textDecoration: "none", color: "#fff" }}>
+                <Link to="/dashboard" style={{ textDecoration: "none", color: "#fff" }}>
                     <li className='p-2'><BiSolidDashboard className="me-2" /> Dashboard</li>
                 </Link>
                 <Link to="hotels" style={{ textDecoration: "none", color: "#fff" }}>

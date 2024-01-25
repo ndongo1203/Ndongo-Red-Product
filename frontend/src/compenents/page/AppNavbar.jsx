@@ -1,14 +1,32 @@
 import React from 'react';
 import profileImage from '../../Assets/images/profile.png'; 
 import { IoIosNotifications } from "react-icons/io";
-import HeaderHotels from './contenuHotel/HeaderHotels';
+import { MdLogout } from "react-icons/md";
+// import HeaderHotels from './contenuHotel/HeaderHotels';
+import { useLocation } from 'react-router-dom'
+import HeaderSidebar from './HeaderSidebar';
+
 
 const AppNavbar = () => {
+    const location = useLocation() 
+    const path= location.pathname
+    const getTitle = () => {
+        switch (path) {
+            case "/dashboard" :
+            return "Dashboard"
+            case  "/dashboard/hotels":
+            return 'Liste des hotels';
+
+            default: 
+                return 'Page introuvable';
+        }
+    }
+
     return (
         <div className="">
         <nav className="navbar navbar-expand-lg navbar-light p-2 shadow-sm">
         <div className="container-fluid">
-            <a className="navbar-brand fw-bold" href="#dashboard">Dashboard</a>
+            <a className="navbar-brand fw-bold" href="#dashboard">{getTitle()}</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -22,15 +40,15 @@ const AppNavbar = () => {
                             <IoIosNotifications className='fs-3 mt-2' />
                         </a>
                     </li>
-                    <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle this-profile" href="#Profil" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li>
+                        <a className="nav-link this-profile" href="#Profil"  role="button">
                             <img src={profileImage} alt="Profile" className="profile-image img-fluid" />
                         </a>
-                        <ul className="dropdown-menu ms-5" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="#profile">Profil</a></li>
-                            <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="#deconnexion">Déconnexion</a></li>
-                        </ul>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#notification">
+                            <MdLogout className='fs-3 mt-2' />
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +56,7 @@ const AppNavbar = () => {
         </nav>
         <div className="">
             {/*<HeaderDashboard />*/}
-            <HeaderHotels />
+            <HeaderSidebar />
         </div>
         </div>
     );

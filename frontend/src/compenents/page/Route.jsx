@@ -7,32 +7,32 @@ import DashboardPage from './contenuDashboard/DashboardPage'
 import ListeHotelsPage from './contenuHotel/ListeHotelsPage'
 
 export default function RouteID() {
-    const router = createBrowserRouter ([
+    const router = createBrowserRouter([
         {
-            path : "/",
+            path: "/",
             element: <Connexion />
         },
         {
-            path : '/inscription',
+            path: '/inscription',
             element: <Inscription />
         },
         {
-            path : '/dashboard',
+            path: '/Dashboard',
             element: <Dashboard />,
             children: [
                 {
                     index: true,
-                    element : <DashboardPage />
+                    element: <DashboardPage />
                 },
                 {
-                    path : 'hotels',
-                    element : <ListeHotelsPage />
+                    path: 'hotels',
+                    element: <ListeHotelsPage />
                 }
             ]
         },
     ])
 
-  return (
-    <RouterProvider router={router} />
-  )
+    return (
+        <RouterProvider router={router} />
+    )
 }
